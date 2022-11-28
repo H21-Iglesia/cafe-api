@@ -1,0 +1,621 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API cafeteriah21",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/"
+        }
+    ],
+    "paths": {
+        "/api/categoriaProducto": {
+            "get": {
+                "tags": [
+                    "Categoria_Producto"
+                ],
+                "summary": "Mostrar",
+                "operationId": "6e83e0924d57c663435596a837baab4c",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todas los productos con sus categorias."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categoria_Producto"
+                ],
+                "summary": "Cargar",
+                "operationId": "eb4854d36ba22d55b04d8036144118d1",
+                "responses": {
+                    "200": {
+                        "description": "Guarga un producto con su categorias."
+                    }
+                }
+            }
+        },
+        "/api/categoriaProducto/{id}": {
+            "put": {
+                "tags": [
+                    "Categoria_Producto"
+                ],
+                "summary": "Actualizar",
+                "operationId": "6ce1e4d62ee68c4e2dcdc1ad9737e67d",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza un producto y su categoria."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categoria_Producto"
+                ],
+                "summary": "Eliminar",
+                "operationId": "2f549320dd787aeb0796569ecd32a7eb",
+                "responses": {
+                    "200": {
+                        "description": "Elimina un producto y su categoria."
+                    }
+                }
+            }
+        },
+        "/api/etiqueta": {
+            "get": {
+                "tags": [
+                    "Etiqueta"
+                ],
+                "summary": "Mostrar etiquetas ",
+                "operationId": "39dc728065ee47a853c53ce156bb1da0",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todas las etiquetas."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Etiqueta"
+                ],
+                "summary": "Cargar etiqueta ",
+                "operationId": "a4c37076be075050c54bc2ba86cdef7e",
+                "responses": {
+                    "200": {
+                        "description": "Guarda una etiqueta."
+                    }
+                }
+            }
+        },
+        "/api/etiqueta/{id}": {
+            "put": {
+                "tags": [
+                    "Etiqueta"
+                ],
+                "summary": "Actualizar etiqueta ",
+                "operationId": "a168a5920d00eaa5f5dc0651bdb8bdc1",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza los datos de una etiqueta."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Etiqueta"
+                ],
+                "summary": "Eliminar etiqueta ",
+                "operationId": "1b2906c63da45434ff7fd3471dbb6755",
+                "responses": {
+                    "200": {
+                        "description": "Elimina una etiqueta."
+                    }
+                }
+            }
+        },
+        "/api/etiquetaUsuario": {
+            "get": {
+                "tags": [
+                    "Etiqueta_Usuario"
+                ],
+                "summary": "Mostrar ",
+                "operationId": "1db1362c1c9098d177e4ef3e61233c6d",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todos lo usuarios y sus etiquetas."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Etiqueta_Usuario"
+                ],
+                "summary": "Cargar ",
+                "operationId": "723548e2126305f2187fad6063834c1e",
+                "responses": {
+                    "200": {
+                        "description": "Guarda un usuario y su etiqueta."
+                    }
+                }
+            }
+        },
+        "/api/etiquetaUsuario/{id}": {
+            "put": {
+                "tags": [
+                    "Etiqueta_Usuario"
+                ],
+                "summary": "Actualizar ",
+                "operationId": "6e79c69e354759854a1e402f7c8c77a3",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza los datos de un usuario y su etiqueta."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Etiqueta_Usuario"
+                ],
+                "summary": "Eliminar",
+                "operationId": "101e2fa1387a47d84f8fac3850e6d5af",
+                "responses": {
+                    "200": {
+                        "description": "Elimina un usuario y su etiqueta"
+                    }
+                }
+            }
+        },
+        "/api/pedidoProducto": {
+            "get": {
+                "tags": [
+                    "Pedido_producto"
+                ],
+                "summary": "Mostrar ",
+                "operationId": "89a83d5828e6c51ed25e98388365341c",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todos los pedidos con sus productos."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Pedido_producto"
+                ],
+                "summary": "Cargar ",
+                "operationId": "fa2febd9e40f63f1a51dff33718ca5a4",
+                "responses": {
+                    "200": {
+                        "description": "Guarda un pedido con su producto."
+                    }
+                }
+            }
+        },
+        "/api/pedidoProducto/{id}": {
+            "put": {
+                "tags": [
+                    "Pedido_producto"
+                ],
+                "summary": "Actualizar ",
+                "operationId": "ca020c1b1722f55910d3f158d348854c",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza los datos de un pedido con su producto."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Pedido_producto"
+                ],
+                "summary": "Eliminar ",
+                "operationId": "324d8faeecd981d283d4b055d1433aab",
+                "responses": {
+                    "200": {
+                        "description": "Elimina un pedido con su producto."
+                    }
+                }
+            }
+        },
+        "/api/tipopago": {
+            "get": {
+                "tags": [
+                    "TipoPago"
+                ],
+                "summary": "Mostrar tipo de pagos ",
+                "operationId": "947f2fb34c84d3a9f07360cb6cce63a4",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todos los tipo de pagos."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "TipoPago"
+                ],
+                "summary": "Cargar tipo de pago ",
+                "operationId": "b6ebd4c09402210416035ddcf43c9417",
+                "responses": {
+                    "200": {
+                        "description": "Guarda un tipo de pago."
+                    }
+                }
+            }
+        },
+        "/api/tipopago/{id}": {
+            "put": {
+                "tags": [
+                    "TipoPago"
+                ],
+                "summary": "Actualizar tipo de pago ",
+                "operationId": "8c8c6bf288d3d7f515b9780548d133a3",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza los datos de un tipo de pago."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "TipoPago"
+                ],
+                "summary": "Eliminar tipo de pago ",
+                "operationId": "ef19939c318de9c4dc119bbc2ddca939",
+                "responses": {
+                    "200": {
+                        "description": "Elimina un tipo de pago."
+                    }
+                }
+            }
+        },
+        "/api/usuario": {
+            "get": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Mostrar usuarios ",
+                "operationId": "5f08371670ce270a0e6577fae9539512",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todos los usuarios."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Cargar usuario ",
+                "operationId": "d5e32171c128f56efd1872d1ec23f2c8",
+                "responses": {
+                    "200": {
+                        "description": "Guarda un usuario."
+                    }
+                }
+            }
+        },
+        "/api/usuario/{id}": {
+            "put": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Actualizar usuario ",
+                "operationId": "ea3d8c0180893fb3e107fae2b843db85",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza los datos de un usuario."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Usuario"
+                ],
+                "summary": "Eliminar usuario ",
+                "operationId": "ab48b3f880701f25e88fd267382fe63c",
+                "responses": {
+                    "200": {
+                        "description": "Elimina un usuario."
+                    }
+                }
+            }
+        },
+        "/api/categoria": {
+            "get": {
+                "tags": [
+                    "Categoria"
+                ],
+                "summary": "Mostrar categorias",
+                "operationId": "8d4779be4d895a3c39b03bf2ab0a20ac",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todas las categorias."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categoria"
+                ],
+                "summary": "Cargar categoria",
+                "operationId": "b7cb761ff74de403362575cb21bb8da0",
+                "responses": {
+                    "200": {
+                        "description": "Guarda una categoria"
+                    }
+                }
+            }
+        },
+        "/api/categoria/{id}": {
+            "put": {
+                "tags": [
+                    "Categoria"
+                ],
+                "summary": "Actualizar categoria",
+                "operationId": "e2e5693576ab0e6125c2c05b3f23a6dc",
+                "responses": {
+                    "200": {
+                        "description": " Actualiza datos de una categoria."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categoria"
+                ],
+                "summary": "Eliminar categoria",
+                "operationId": "0c6b28e624df1413ffe39e67f552b17b",
+                "responses": {
+                    "200": {
+                        "description": "Elimina una categoria."
+                    }
+                }
+            }
+        },
+        "/api/estado": {
+            "get": {
+                "tags": [
+                    "Estado"
+                ],
+                "summary": "Mostrar estados ",
+                "operationId": "5bb1434aa3053af8bcbcf1cd1dbc8815",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todos los estados."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Estado"
+                ],
+                "summary": "Cargar estado ",
+                "operationId": "1f4fe54f79c3b7a1e18bec568be1003d",
+                "responses": {
+                    "200": {
+                        "description": "Guarda un estado."
+                    }
+                }
+            }
+        },
+        "/api/estado/{id}": {
+            "put": {
+                "tags": [
+                    "Estado"
+                ],
+                "summary": "Actualizar estado ",
+                "operationId": "236f53c083b62ea62b6ef00376df3df6",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza un estado."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Estado"
+                ],
+                "summary": "Eliminar estado ",
+                "operationId": "bbb77951bed9a094e5ea08c972fb0809",
+                "responses": {
+                    "200": {
+                        "description": "Elimina un estado."
+                    }
+                }
+            }
+        },
+        "/api/pedido": {
+            "get": {
+                "tags": [
+                    "Pedido"
+                ],
+                "summary": "Mostrar pedidos ",
+                "operationId": "32e633c6ce2438edc64cea22c91aa4ef",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todos los pedidos."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Pedido"
+                ],
+                "summary": "Cargar pedido ",
+                "operationId": "aaca4463be35e7d8616409e9c7211912",
+                "responses": {
+                    "200": {
+                        "description": "Guarda un pedido."
+                    }
+                }
+            }
+        },
+        "/api/pedido/{id}": {
+            "put": {
+                "tags": [
+                    "Pedido"
+                ],
+                "summary": "Actualizar pedido ",
+                "operationId": "522ca7f0713f40ddc384c2942cde15f7",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza los datos de un pedido."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Pedido"
+                ],
+                "summary": "Eliminar pedido ",
+                "operationId": "006b1039550c9ec4cf3e7c6a2e87dfb7",
+                "responses": {
+                    "200": {
+                        "description": "Elimina un pedido."
+                    }
+                }
+            }
+        },
+        "/api/producto": {
+            "get": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Mostrar productos",
+                "operationId": "953721128871b05b87c5ca3d2adec010",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todos los productos."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Cargar producto",
+                "operationId": "7b71162ff2767fd1e3bda49c708b449f",
+                "responses": {
+                    "200": {
+                        "description": "Guarda un producto."
+                    }
+                }
+            }
+        },
+        "/api/producto/{id}": {
+            "put": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Actualizar producto",
+                "operationId": "b3ce38902e30d60769644ecb7520055c",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza un producto."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Producto"
+                ],
+                "summary": "Eliminar producto",
+                "operationId": "5a4aa5ce1bafd39b9743fef2d7deb267",
+                "responses": {
+                    "200": {
+                        "description": "Elimina un producto."
+                    }
+                }
+            }
+        },
+        "/api/receta": {
+            "get": {
+                "tags": [
+                    "Receta"
+                ],
+                "summary": "Mostrar recetas",
+                "operationId": "5415b4aef61a074c411744396e8cd35c",
+                "responses": {
+                    "200": {
+                        "description": "Muestra todas las recetas."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Receta"
+                ],
+                "summary": "Agregar receta",
+                "operationId": "0b704802d9776a22f47e7a231a4d9afa",
+                "responses": {
+                    "200": {
+                        "description": "Guarda una receta."
+                    }
+                }
+            }
+        },
+        "/api/receta/{id}": {
+            "put": {
+                "tags": [
+                    "Receta"
+                ],
+                "summary": "Actualizar receta",
+                "operationId": "03fbac2a5c75c80aa111cf11ceddb354",
+                "responses": {
+                    "200": {
+                        "description": "Actualiza datos de la receta."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Receta"
+                ],
+                "summary": "Eliminar receta",
+                "operationId": "486a649b526f1222d460919e755278d5",
+                "responses": {
+                    "200": {
+                        "description": "Elimina una receta."
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Categoria_Producto"
+        },
+        {
+            "name": "Etiqueta"
+        },
+        {
+            "name": "Etiqueta_Usuario"
+        },
+        {
+            "name": "Pedido_producto"
+        },
+        {
+            "name": "TipoPago"
+        },
+        {
+            "name": "Usuario"
+        },
+        {
+            "name": "Categoria"
+        },
+        {
+            "name": "Estado"
+        },
+        {
+            "name": "Pedido"
+        },
+        {
+            "name": "Producto"
+        },
+        {
+            "name": "Receta"
+        }
+    ]
+}
