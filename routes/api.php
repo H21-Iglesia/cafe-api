@@ -31,7 +31,7 @@ Route::delete('/receta/{id}', 'App\Http\Controllers\recetaController@destroy'); 
 
 Route::get('/producto', 'App\Http\Controllers\productoController@index'); // mostrar productos
 Route::post('/producto', 'App\Http\Controllers\productoController@store'); // cargar producto
-Route::put('/producto/{id}', 'App\Http\Controllers\productoController@update'); // actualizar producto
+Route::post('/producto/editar', 'App\Http\Controllers\productoController@update'); // actualizar producto
 Route::delete('/producto/{id}', 'App\Http\Controllers\productoController@destroy'); // Eliminar producto
 
 Route::get('/pedido', 'App\Http\Controllers\pedidoController@index'); // mostrar pedidos
@@ -68,3 +68,15 @@ Route::get('/etiquetaUsuario', 'App\Http\Controllers\EtiquetaUsuarioController@i
 Route::post('/etiquetaUsuario', 'App\Http\Controllers\EtiquetaUsuarioController@store'); // cargar etiqueta usuario
 Route::put('/etiquetaUsuario/{id}', 'App\Http\Controllers\EtiquetaUsuarioController@update'); // actualizar etiqueta usuario
 Route::delete('/etiquetaUsuario/{id}', 'App\Http\Controllers\EtiquetaUsuarioController@destroy'); // Eliminar etiqueta usuario
+
+Route::get('/rol', 'App\Http\Controllers\RolController@index'); // mostrar 
+Route::get('/rol/{id}', 'App\Http\Controllers\RolController@getforid'); // mostrar por id
+Route::post('/rol', 'App\Http\Controllers\RolController@store'); // cargar 
+Route::put('/rol/{id}', 'App\Http\Controllers\RolController@update'); // actualizar 
+Route::delete('/rol/{id}', 'App\Http\Controllers\RolController@destroy'); // Eliminar 
+
+Route::get('/trabajador', 'App\Http\Controllers\TrabajadorController@index'); // mostrar 
+Route::get('/trabajador/{id}', 'App\Http\Controllers\TrabajadorController@getforid'); // mostrar por id
+Route::post('/trabajador', 'App\Http\Controllers\TrabajadorController@store'); // cargar 
+Route::post('/trabajador/editar', 'App\Http\Controllers\TrabajadorController@update'); // actualizar 
+Route::delete('/trabajador/{id}', 'App\Http\Controllers\TrabajadorController@destroy'); // Eliminar 

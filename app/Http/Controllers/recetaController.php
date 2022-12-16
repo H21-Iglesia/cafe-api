@@ -117,7 +117,7 @@ class recetaController extends Controller
     */
     public function update(Request $request, $id)
     {
-        $datos = Producto::findOrFail($request->id);
+        $datos = Receta::findOrFail($request->id);
         $datos->nombre = $request->nombre;
         $datos->preparacion = $request->preparacion;
         $datos->ingredientes = $request->ingredientes;
@@ -146,7 +146,7 @@ class recetaController extends Controller
     */
     public function destroy($id)
     {
-        $datos = Producto::destroy($id);
+        $datos = Receta::destroy($id);
         return $datos;
     }
 }
