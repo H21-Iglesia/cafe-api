@@ -33,7 +33,7 @@ class productoController extends Controller
     */
     public function index()
     {
-        $datos = Producto::all();
+        $datos = Producto::with('Categorias')->get();
         return $datos;
     }
 
@@ -147,7 +147,7 @@ class productoController extends Controller
     *     )
     * )
     */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $datos = Producto::findOrFail($request->id);
         $datos->nombre = $request->nombre;
