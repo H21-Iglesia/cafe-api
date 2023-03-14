@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\CategoriaProducto;
 
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
@@ -74,8 +75,15 @@ class productoController extends Controller
         $datos->receta_id = $request->receta_id;
         $datos->save();
 
+        if($request->categoria_id != null){
+            $categoriaProducto = new CategoriaProducto();
+            $categoriaProducto->categoria_id = $request->categoria_id;
+            $categoriaProducto->producto_id = $datos->id;
+            $categoriaProducto->save();
+        }
+
         if($request->hasFile('foto')){
-                
+
             //Guardamos el nombre original y la extension de la imagen
             $file = $request->file('foto');
             $filename = $file->getClientOriginalName();
@@ -91,13 +99,13 @@ class productoController extends Controller
             $picture = $picture.".".$extension;
 
             //Guardar la imagen en la carpeta images
-            
+
             Image::make($request->file('foto'))->resize(500, 500)->save(public_path('images/'.$picture),90);
 
             // $file->move(public_path('images/'),$picture);
 
             //Crea la empresa y guarda el nombre en logotipo
-            
+
             $datos -> foto = $picture;
             $datos -> save();
 
@@ -156,8 +164,15 @@ class productoController extends Controller
         $datos->receta_id = $request->receta_id;
         $datos->save();
 
+        if($request->categoria_id != null){
+            $categoriaProducto = new CategoriaProducto();
+            $categoriaProducto->categoria_id = $request->categoria_id;
+            $categoriaProducto->producto_id = $request->id;
+            $categoriaProducto->save();
+        }
+
         if($request->hasFile('foto')){
-                
+
             //Guardamos el nombre original y la extension de la imagen
             $file = $request->file('foto');
             $filename = $file->getClientOriginalName();
@@ -173,18 +188,18 @@ class productoController extends Controller
             $picture = $picture.".".$extension;
 
             //Guardar la imagen en la carpeta images
-            
+
             Image::make($request->file('foto'))->resize(500, 500)->save(public_path('images/'.$picture),90);
 
             // $file->move(public_path('images/'),$picture);
 
             //Crea la empresa y guarda el nombre en logotipo
-            
+
             $datos -> foto = $picture;
             $datos -> save();
 
         }
-        return $datos;
+        return ($categoriaProducto);
     }
 
     /**
@@ -213,6 +228,9 @@ class productoController extends Controller
             File::delete($image_path);
         }
 
+        $categoriaProducto = CategoriaProducto::findOrFail($datos->categorias[0]->id);
+
+        $categoriaProducto->destroy($datos->categorias[0]->id);
         $datos->destroy($id);
         return $datos;
     }

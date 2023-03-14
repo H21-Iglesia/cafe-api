@@ -11,6 +11,6 @@ class Producto extends Model
 
     public function Categorias()
     {
-        return $this->hasMany(CategoriaProducto::class)->with('categoria');
+        return $this->hasMany(CategoriaProducto::class)->with('detalleCategoria');
     }
 }

@@ -26,7 +26,7 @@ class CategoriaProductoController extends Controller
     */
     public function index()
     {
-        $datos = CategoriaProducto::with('categoria')->get();;
+        $datos = CategoriaProducto::with('detalleCategoria')->get();;
         return $datos;
     }
 
