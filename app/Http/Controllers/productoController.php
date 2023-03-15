@@ -75,11 +75,13 @@ class productoController extends Controller
         $datos->receta_id = $request->receta_id;
         $datos->save();
 
-        if($request->categoria_id != null){
-            $categoriaProducto = new CategoriaProducto();
-            $categoriaProducto->categoria_id = $request->categoria_id;
-            $categoriaProducto->producto_id = $datos->id;
-            $categoriaProducto->save();
+        if($request->categorias != null){
+            foreach ($request->categorias as $categoria => $id) {
+                $categoriaProducto = new CategoriaProducto();
+                $categoriaProducto->categoria_id = $id;
+                $categoriaProducto->producto_id = $datos->id;
+                $categoriaProducto->save();
+            }
         }
 
         if($request->hasFile('foto')){
@@ -164,11 +166,13 @@ class productoController extends Controller
         $datos->receta_id = $request->receta_id;
         $datos->save();
 
-        if($request->categoria_id != null){
-            $categoriaProducto = new CategoriaProducto();
-            $categoriaProducto->categoria_id = $request->categoria_id;
-            $categoriaProducto->producto_id = $request->id;
-            $categoriaProducto->save();
+        if($request->categorias != null){
+            foreach ($request->categorias as $categoria => $id) {
+                $categoriaProducto = new CategoriaProducto();
+                $categoriaProducto->categoria_id = $id;
+                $categoriaProducto->producto_id = $datos->id;
+                $categoriaProducto->save();
+            }
         }
 
         if($request->hasFile('foto')){
@@ -226,11 +230,15 @@ class productoController extends Controller
         $image_path = public_path().'/images/'.$datos->foto;
         if(File::exists($image_path)) {
             File::delete($image_path);
+        }    
+
+        if($datos->categorias != null){
+            foreach ($datos->categorias as $categoria => $id) {
+                $categoriaProducto = CategoriaProducto::findOrFail($id->id);
+                $categoriaProducto->destroy($id->id);
+            }
         }
 
-        $categoriaProducto = CategoriaProducto::findOrFail($datos->categorias[0]->id);
-
-        $categoriaProducto->destroy($datos->categorias[0]->id);
         $datos->destroy($id);
         return $datos;
     }
