@@ -233,7 +233,7 @@ class productoController extends Controller
         }    
 
         if($datos->categorias != null){
-            foreach (json_decode($datos->categorias,true) as $categoria) {
+            foreach ($datos->categorias as $categoria) {
                 $categoriaProducto = CategoriaProducto::findOrFail($categoria->id);
                 $categoriaProducto->destroy($categoria->id);
             }
