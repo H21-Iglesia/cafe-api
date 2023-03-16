@@ -76,7 +76,7 @@ class productoController extends Controller
         $datos->save();
 
         if($request->categorias != null){
-            foreach ($request->categorias as $categoria) {
+            foreach (json_decode($request->categorias,true) as $categoria) {
                 $categoriaProducto = new CategoriaProducto();
                 $categoriaProducto->categoria_id = $categoria;
                 $categoriaProducto->producto_id = $datos->id;
@@ -167,7 +167,7 @@ class productoController extends Controller
         $datos->save();
 
         if($request->categorias != null){
-            foreach ($request->categorias as $categoria) {
+            foreach (json_decode($request->categorias,true) as $categoria) {
                 $categoriaProducto = new CategoriaProducto();
                 $categoriaProducto->categoria_id = $categoria;
                 $categoriaProducto->producto_id = $datos->id;
@@ -233,7 +233,7 @@ class productoController extends Controller
         }    
 
         if($datos->categorias != null){
-            foreach ($datos->categorias as $categoria) {
+            foreach (json_decode($datos->categorias,true) as $categoria) {
                 $categoriaProducto = CategoriaProducto::findOrFail($categoria->id);
                 $categoriaProducto->destroy($categoria->id);
             }
