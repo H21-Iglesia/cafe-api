@@ -76,9 +76,9 @@ class productoController extends Controller
         $datos->save();
 
         if($request->categorias != null){
-            foreach ($request->categorias as $categoria => $id) {
+            foreach ($request->categorias as $categoria) {
                 $categoriaProducto = new CategoriaProducto();
-                $categoriaProducto->categoria_id = $id;
+                $categoriaProducto->categoria_id = $categoria;
                 $categoriaProducto->producto_id = $datos->id;
                 $categoriaProducto->save();
             }
@@ -167,9 +167,9 @@ class productoController extends Controller
         $datos->save();
 
         if($request->categorias != null){
-            foreach ($request->categorias as $categoria => $id) {
+            foreach ($request->categorias as $categoria) {
                 $categoriaProducto = new CategoriaProducto();
-                $categoriaProducto->categoria_id = $id;
+                $categoriaProducto->categoria_id = $categoria;
                 $categoriaProducto->producto_id = $datos->id;
                 $categoriaProducto->save();
             }
@@ -203,7 +203,7 @@ class productoController extends Controller
             $datos -> save();
 
         }
-        return ($categoriaProducto);
+        return $datos;
     }
 
     /**
@@ -233,9 +233,9 @@ class productoController extends Controller
         }    
 
         if($datos->categorias != null){
-            foreach ($datos->categorias as $categoria => $id) {
-                $categoriaProducto = CategoriaProducto::findOrFail($id->id);
-                $categoriaProducto->destroy($id->id);
+            foreach ($datos->categorias as $categoria) {
+                $categoriaProducto = CategoriaProducto::findOrFail($categoria->id);
+                $categoriaProducto->destroy($categoria->id);
             }
         }
 
