@@ -71,6 +71,7 @@ class productoController extends Controller
         $datos = new Producto();
         $datos->nombre = $request->nombre;
         $datos->costo = $request->costo;
+        $datos->stock = $request->stock;;
         $datos->cantidad = 0;
         $datos->receta_id = $request->receta_id;
         $datos->save();
@@ -162,6 +163,7 @@ class productoController extends Controller
         $datos = Producto::findOrFail($request->id);
         $datos->nombre = $request->nombre;
         $datos->costo = $request->costo;
+        $datos->stock = $request->stock;;
         $datos->cantidad = 0;
         $datos->receta_id = $request->receta_id;
         $datos->save();

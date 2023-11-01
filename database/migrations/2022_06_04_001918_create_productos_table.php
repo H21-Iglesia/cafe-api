@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->float('costo',8,2);
             $table->text('foto')->nullable();
+            $table->integer('stock')->default(-1);
             $table->foreignId('receta_id')->constrained()->cascadeOnDelete();
             $table->integer('cantidad')->default(0);
             $table->timestamps();
