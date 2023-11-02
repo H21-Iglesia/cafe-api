@@ -34,7 +34,7 @@ class productoController extends Controller
     */
     public function index()
     {
-        $datos = Producto::with('Categorias')->get();
+        $datos = Producto::with('Categorias')->orderBy('nombre')->get();
         return $datos;
     }
 
