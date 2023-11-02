@@ -79,7 +79,7 @@ class pedidoController extends Controller
         foreach ($request->productos as $producto){
             $datos2 = new PedidoProducto();
             $datos2->pedido_id = $datos->id;
-            $datos2->producto_id = $producto -> id;
+            $datos2->producto_id = $producto->id;
             $datos2->save();
 
             $productoactual = Producto::findOrFail($producto->id);
