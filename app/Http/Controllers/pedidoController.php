@@ -76,15 +76,18 @@ class pedidoController extends Controller
         // $datos->productos = $request->productos;
         $datos->save();
 
-        foreach (json_decode($request->productos) as $producto){
+        foreach ($request->productos as $productoID){
             $datos2 = new PedidoProducto();
             $datos2->pedido_id = $datos->id;
-            $datos2->producto_id = $producto->id;
+            $datos2->producto_id = $productoID;
             $datos2->save();
 
-            $productoactual = Producto::findOrFail($producto->id);
-            $productoactual->stock = $producto->stock;
-            $productoactual->save();
+            $productoactual = Producto::findOrFail($productoID);
+            if($productoactual->stock > 0){
+                $productoactual->stock = $productoactual->stock - 1;
+                $productoactual->save();
+            }
+  
         }
 
 
