@@ -76,7 +76,7 @@ class pedidoController extends Controller
         // $datos->productos = $request->productos;
         $datos->save();
 
-        foreach ($request->productos as $producto){
+        foreach (json_decode($request->productos) as $producto){
             $datos2 = new PedidoProducto();
             $datos2->pedido_id = $datos->id;
             $datos2->producto_id = $producto->id;
