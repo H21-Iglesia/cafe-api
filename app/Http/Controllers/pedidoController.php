@@ -62,7 +62,7 @@ class pedidoController extends Controller
     public function getToday()
     {      
         $fechaHoy = Carbon::now()->toDateString();// Obtiene la fecha actual en el formato YYYY-MM-DD
-        $datos = Pedido::with('pedidoDetalle')->whereDate('created_at','2023-11-08')->get(); // Filtra los pedidos por la fecha de hoy
+        $datos = Pedido::with('pedidoDetalle')->whereDate('created_at',$fechaHoy)->get(); // Filtra los pedidos por la fecha de hoy
         return response()->json($datos);
     }
 
