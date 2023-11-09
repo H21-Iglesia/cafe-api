@@ -33,20 +33,28 @@ class pedidoController extends Controller
     public function index(Request $request)
     {
         $top = $request->input('top', null); // Obtiene el parámetro 'top' (o null si no se proporciona)
-    
+        
         if ($top !== null) {
-            $datos = Pedido::with('pedidoDetalle')->take($top)->get();
+            $datos = Pedido::with('pedidoDetalle')
+                        ->orderBy('created_at', 'desc') // Ordena por fecha de creación en orden descendente (últimos agregados primero)
+                        ->take($top)
+                        ->get();
         } else {
-            $datos = Pedido::with('pedidoDetalle')->get();
+            $datos = Pedido::with('pedidoDetalle')
+                        ->orderBy('created_at', 'desc') // Ordena por fecha de creación en orden descendente (últimos agregados primero)
+                        ->get();
         }
-    
+        
         return response()->json($datos);
     }
 
     public function getToday()
     {      
         $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
-        $datos = Pedido::with('pedidoDetalle')->whereDate('created_at', $fechaHoy)->get(); // Filtra los pedidos por la fecha de hoy
+        $datos = Pedido::with('pedidoDetalle')
+                    ->whereRaw('DATE(created_at) = ?', [$fechaHoy]) // Filtra los pedidos por la fecha de hoy
+                    ->get();
+    
         return response()->json($datos);
     }
 
@@ -75,7 +83,7 @@ class pedidoController extends Controller
         $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
         $datos = Pedido::with('pedidoDetalle')
                         ->whereIn('pagado', [0]) // Filtra por estado con deuda (3)
-                        ->whereDate('created_at', $fechaHoy) // Filtra por fecha de hoy
+                        ->whereDate('DATE(created_at) = ?', $fechaHoy) // Filtra por fecha de hoy
                         ->get();
 
         return response()->json($datos);
