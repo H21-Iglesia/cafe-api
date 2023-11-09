@@ -64,7 +64,7 @@ class pedidoController extends Controller
     public function getPendingOrdersWithDebt()
     {      
         $datos = Pedido::with('pedidoDetalle')
-                        ->whereIn('estado_id', [3]) // Filtra por estados con deuda (3)
+                        ->whereIn('pagado', [0]) // Filtra por estados con deuda (3)
                         ->get();
     
         return response()->json($datos);
@@ -74,7 +74,7 @@ class pedidoController extends Controller
     {      
         $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
         $datos = Pedido::with('pedidoDetalle')
-                        ->whereIn('estado_id', [3]) // Filtra por estado con deuda (3)
+                        ->whereIn('pagado', [0]) // Filtra por estado con deuda (3)
                         ->whereDate('created_at', $fechaHoy) // Filtra por fecha de hoy
                         ->get();
 
