@@ -117,7 +117,7 @@ class pedidoController extends Controller
     {      
         $datos = Pedido::with('pedidoDetalle')
                         ->where('estado_id', 1) // Filtra por estado pendiente
-                        ->whereDate('created_at', $fechay) // Filtra por fecha
+                        ->whereDate('created_at', $fecha) // Filtra por fecha
                         ->get();
 
         return response()->json($datos);
