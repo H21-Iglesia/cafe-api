@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\PedidoProducto;
 use App\Models\Producto;
+use Carbon\Carbon;
 
 /**
  *@OA\Tag(name="Pedido")
@@ -51,9 +52,12 @@ class pedidoController extends Controller
     public function getToday()
     {      
         $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
+    
         $datos = Pedido::with('pedidoDetalle')
-                    ->whereRaw('DATE(created_at) = ?', [$fechaHoy]) // Filtra los pedidos por la fecha de hoy
-                    ->get();
+                    ->get()
+                    ->filter(function($pedido) use ($fechaHoy) {
+                        return Carbon::parse($pedido->created_at)->format('Y-m-d') == $fechaHoy;
+                    });
     
         return response()->json($datos);
     }
@@ -61,11 +65,14 @@ class pedidoController extends Controller
     public function getPendingOrdersToday()
     {      
         $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
+    
         $datos = Pedido::with('pedidoDetalle')
-                        ->where('estado_id', 1) // Filtra por estado pendiente
-                        ->whereDate('created_at', $fechaHoy) // Filtra por fecha de hoy
-                        ->get();
-
+                    ->where('estado_id', 1) // Filtra por estado pendiente
+                    ->get()
+                    ->filter(function($pedido) use ($fechaHoy) {
+                        return Carbon::parse($pedido->created_at)->format('Y-m-d') == $fechaHoy;
+                    });
+    
         return response()->json($datos);
     }
 
@@ -81,11 +88,14 @@ class pedidoController extends Controller
     public function getPendingOrdersWithDebtToday()
     {      
         $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
+    
         $datos = Pedido::with('pedidoDetalle')
-                        ->whereIn('pagado', [0]) // Filtra por estado con deuda (3)
-                        ->whereDate('DATE(created_at) = ?', $fechaHoy) // Filtra por fecha de hoy
-                        ->get();
-
+                    ->whereIn('pagado', [0]) // Filtra por estado con deuda (3)
+                    ->get()
+                    ->filter(function($pedido) use ($fechaHoy) {
+                        return Carbon::parse($pedido->created_at)->format('Y-m-d') == $fechaHoy;
+                    });
+    
         return response()->json($datos);
     }
 
