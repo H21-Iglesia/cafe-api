@@ -30,11 +30,55 @@ class pedidoController extends Controller
     *     )
     * )
     */
-    public function index()
+    public function index(Request $request)
     {
-         
-        $datos = Pedido::with('pedidoDetalle')->get();
-        return response()->json($datos) ;
+        $top = $request->input('top', null); // Obtiene el parámetro 'top' (o null si no se proporciona)
+    
+        if ($top !== null) {
+            $datos = Pedido::with('pedidoDetalle')->take($top)->get();
+        } else {
+            $datos = Pedido::with('pedidoDetalle')->get();
+        }
+    
+        return response()->json($datos);
+    }
+
+    public function getToday()
+    {      
+        $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
+        $datos = Pedido::with('pedidoDetalle')->whereDate('created_at', $fechaHoy)->get(); // Filtra los pedidos por la fecha de hoy
+        return response()->json($datos);
+    }
+
+    public function getPendingOrdersToday()
+    {      
+        $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
+        $datos = Pedido::with('pedidoDetalle')
+                        ->where('estado_id', 1) // Filtra por estado pendiente
+                        ->whereDate('created_at', $fechaHoy) // Filtra por fecha de hoy
+                        ->get();
+
+        return response()->json($datos);
+    }
+
+    public function getPendingOrdersWithDebt()
+    {      
+        $datos = Pedido::with('pedidoDetalle')
+                        ->whereIn('estado_id', [1, 3]) // Filtra por estados pendiente (1) y con deuda (3)
+                        ->get();
+    
+        return response()->json($datos);
+    }
+
+    public function getPendingOrdersWithDebtToday()
+    {      
+        $fechaHoy = date('Y-m-d'); // Obtiene la fecha actual en el formato YYYY-MM-DD
+        $datos = Pedido::with('pedidoDetalle')
+                        ->whereIn('estado_id', [1, 3]) // Filtra por estados pendiente (1) y con deuda (3)
+                        ->whereDate('created_at', $fechaHoy) // Filtra por fecha de hoy
+                        ->get();
+
+        return response()->json($datos);
     }
 
     /**

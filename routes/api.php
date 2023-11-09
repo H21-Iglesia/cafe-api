@@ -39,6 +39,12 @@ Route::post('/pedido', 'App\Http\Controllers\pedidoController@store'); // cargar
 Route::put('/pedido/{id}', 'App\Http\Controllers\pedidoController@update'); // actualizar pedido
 Route::delete('/pedido/{id}', 'App\Http\Controllers\pedidoController@destroy'); // Eliminar pedido
 
+Route::get('/pedido/hoy', 'App\Http\Controllers\pedidoController@getToday'); // mostrar pedidos de hoy
+Route::get('/pedido/hoy/pendientes', 'App\Http\Controllers\pedidoController@getPendingOrdersToday'); // mostrar pedidos pendientes de hoy
+Route::get('/pedido/deudas', 'App\Http\Controllers\pedidoController@getPendingOrdersWithDebt'); // mostrar pedidos pendientes de hoy
+Route::get('/pedido/hoy/deudas', 'App\Http\Controllers\pedidoController@getPendingOrdersWithDebtToday'); // mostrar pedidos con deudas de hoy
+
+
 Route::get('/pedidoProducto', 'App\Http\Controllers\PedidoProductoController@index'); // mostrar PedidoProductos
 Route::post('/pedidoProducto', 'App\Http\Controllers\PedidoProductoController@store'); // cargar PedidoProducto
 Route::put('/pedidoProducto/{id}', 'App\Http\Controllers\PedidoProductoController@update'); // actualizar PedidoProducto
