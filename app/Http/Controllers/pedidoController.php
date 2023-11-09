@@ -83,10 +83,10 @@ class pedidoController extends Controller
         return response()->json($datos);
     }
 
-    public function getPendingOrdersWithDebt()
+    public function getOrdersWithDebt()
     {      
         $datos = Pedido::with('pedidoDetalle')
-                        ->whereIn('pagado', [0]) // Filtra por estados con deuda (3)
+                        ->where('pagado', 0) // Filtra por deudas
                         ->get();
     
         return response()->json($datos);
@@ -106,7 +106,7 @@ class pedidoController extends Controller
     public function getPendingOrdersWithDebtByDate($fecha)
     {      
         $datos = Pedido::with('pedidoDetalle')
-                        ->whereIn('pagado', [0]) // Filtra por estado con deuda (3)
+                        ->whereIn('pagado', [0]) // Filtra por deuda
                         ->whereDate('created_at', $fecha) // Filtra por fecha
                         ->get();
 

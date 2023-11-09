@@ -44,7 +44,7 @@ Route::get('/fechahoy', 'App\Http\Controllers\pedidoController@getCurrentDate');
 Route::get('/pedido/{fecha}', 'App\Http\Controllers\pedidoController@getOrdersByDate'); // mostrar pedidos de hoy
 Route::get('/pedido/hoy', 'App\Http\Controllers\pedidoController@getToday'); // mostrar pedidos de hoy
 Route::get('/pedido/hoy/pendientes', 'App\Http\Controllers\pedidoController@getPendingOrdersToday'); // mostrar pedidos pendientes de hoy
-Route::get('/pedido/deudas', 'App\Http\Controllers\pedidoController@getPendingOrdersWithDebt'); // mostrar pedidos pendientes de hoy
+Route::get('/pedido/deudores', 'App\Http\Controllers\pedidoController@getOrdersWithDebt'); // mostrar pedidos pendientes de hoy
 Route::get('/pedido/hoy/deudas', 'App\Http\Controllers\pedidoController@getPendingOrdersWithDebtToday'); // mostrar pedidos con deudas de hoy
 
 Route::get('/pedido/pendientes/{fecha}', 'App\Http\Controllers\pedidoController@getPendingOrdersbydate'); // mostrar pedidos pendientes de hoy
